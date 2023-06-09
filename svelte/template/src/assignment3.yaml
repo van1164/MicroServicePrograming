@@ -1,0 +1,68 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-node
+  labels:
+    run: my-node
+spec:
+  type: NodePort
+  ports:
+  - port: 80
+    targetPort: 80
+    protocol: TCP
+    name: http
+  selector:
+    run: my-deployment
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+  labels:
+    app: my-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: my-deployment-assignment3
+  template:
+    metadata:
+      labels:
+        app: my-deployment-assignment3
+    spec:
+      containers:
+      - name: spring
+        image: van133/assignment3_spring:latest
+        ports:
+        - containerPort: 8080
+        env:
+          - name : SERVER_PORT
+            value : "8080"
+          - name : SPRING_PROFILES_ACTIVE
+            value : prod
+          - name : SPRING_APPLICATION_NAME
+            value : APP_NAME
+          - name : SPRING_DATA_MONGODB_AUTHENTICATION_DATABASE
+            value : admin
+          - name : SPRING_DATA_MONGODB_AUTO_INDEX_CREATION
+            value : $MONGO_AUTO_INDEX_CREATION
+          - name : SPRING_DATA_MONGODB_HOST
+            value : mongo
+          - name : SPRING_DATA_MONGODB_PORT
+            value : "27017"
+      - name: svelte
+        image: van133/assignment3_svelte:latest
+        ports:
+        - containerPort : 80
+
+      - name: mymongo
+        image: van133/mymongo
+        ports:
+        - containerPort : 27017
+        volumeMounts:
+        - name: mongo
+          mountPath: /data/mongo
+      volumes:
+      - name: mongo
+        emptyDir: {}

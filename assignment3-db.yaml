@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mongo
+  labels:
+    app: mongo
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: mongo
+  template:
+    metadata:
+      labels:
+        app: mongo
+    spec:
+      containers:
+      - name: mymongo
+        image: van133/mymongo
+        ports:
+        - containerPort : 27017
+        volumeMounts:
+        - name: mongo
+          mountPath: /data/mongo
+      volumes:
+      - name: mongo
+        emptyDir: {}

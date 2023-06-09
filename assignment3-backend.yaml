@@ -1,0 +1,36 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: spring
+  labels:
+    app: spring
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: spring
+  template:
+    metadata:
+      labels:
+        app: spring
+    spec:
+      containers:
+      - name: spring
+        image: van133/assignment3_spring:latest
+        ports:
+        - containerPort: 8080
+        env:
+          - name : SERVER_PORT
+            value : "8080"
+          - name : SPRING_PROFILES_ACTIVE
+            value : prod
+          - name : SPRING_APPLICATION_NAME
+            value : APP_NAME
+          - name : SPRING_DATA_MONGODB_AUTHENTICATION_DATABASE
+            value : admin
+          # - name : SPRING_DATA_MONGODB_AUTO_INDEX_CREATION
+          #   value : $MONGO_AUTO_INDEX_CREATION
+          - name : SPRING_DATA_MONGODB_HOST
+            value : mongo
+          - name : SPRING_DATA_MONGODB_PORT
+            value : "27017"

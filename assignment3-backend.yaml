@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: spring
-        image: van133/assignment3_spring:latest
+        image: van133/assignment3_sp:latest
         ports:
         - containerPort: 8080
         env:
@@ -34,3 +34,17 @@ spec:
             value : mongo
           - name : SPRING_DATA_MONGODB_PORT
             value : "27017"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: spring
+spec:
+  selector:
+    app: spring
+  ports:
+  - name: name-of-service-port
+    protocol: TCP
+    port: 8080
+    targetPort: 8080

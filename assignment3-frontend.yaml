@@ -16,6 +16,6 @@ spec:
     spec:
       containers:
       - name: svelte
-        image: van133/assignmet3_svelte
+        image: van133/assignment3_svelte
         ports:
         - containerPort: 80

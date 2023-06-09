@@ -25,3 +25,18 @@ spec:
       volumes:
       - name: mongo
         emptyDir: {}
+
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: mongo
+spec:
+  selector:
+    app: mongo
+  ports:
+  - name: name-of-service-port
+    protocol: TCP
+    port: 27017
+    targetPort: 27017

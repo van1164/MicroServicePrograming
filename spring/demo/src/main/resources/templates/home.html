@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<div style="font-size: xx-large">마이크로서비스프로그래밍 Assignment2</div>
+<button type="button" onclick="location.href='write'"> 글쓰기</button>
+<table>
+    <tr>
+        <th>작성자</th>
+        <th>제목</th>
+    </tr>
+    <tr th:each="user: ${data}">
+        <td th:text="${user.userName}"></td>
+        <td th:text="${user.title}"></td>
+        <td><a th:href="@{show(id=${user.id})}">글보기</a></td>
+
+    </tr>
+</table>
+</body>
+</html>

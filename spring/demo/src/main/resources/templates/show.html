@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>글 보기</title>
+</head>
+<body>
+
+<div style="font-size: xx-large">마이크로서비스프로그래밍 Assignment2</div>
+<button type="button" onclick="location.href='/'"> 뒤로</button>
+<div><span style="font-size: large ; display: inline">제목:    </span><p style="font-size: large ; display: inline" th:text="${data.title}"></p></div>
+<div><span style="font-size: xx-small; display: inline">작성자:    </span><p style="font-size: xx-small; display: inline" th:text="${data.userName}"></p></div>
+
+<div> <p style="font-size: medium" th:text="${data.content}"></p></div>
+</body>
+</html>

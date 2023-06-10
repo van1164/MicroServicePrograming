@@ -1,7 +1,7 @@
 import axios from "axios"
 
 const send = async ({method='', path='', data={}, access_token=''} = {}) => {
-	const commonUrl = 'http://spring:8080'
+	const commonUrl = 'http://localhost:8080'
   const url = commonUrl + path
 
   const headers = {

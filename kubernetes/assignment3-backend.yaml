@@ -41,6 +41,7 @@ kind: Service
 metadata:
   name: spring
 spec:
+  type: NodePort  
   selector:
     app: spring
   ports:

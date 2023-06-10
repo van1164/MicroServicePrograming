@@ -12,3 +12,6 @@ MicroServicePrograming
 ```kubectl apply -f assignment3-db.yaml```
 
 ```kubectl port-forward service/spring 8080:8080```
+
+```minikube service nodeport --url ```
+##### 나온 url 접속

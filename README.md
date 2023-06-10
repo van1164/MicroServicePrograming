@@ -10,3 +10,5 @@ MicroServicePrograming
 ```kubectl apply -f assignment3-frontend.yaml```
 
 ```kubectl apply -f assignment3-db.yaml```
+
+```kubectl port-forward service/spring 8080:8080```
